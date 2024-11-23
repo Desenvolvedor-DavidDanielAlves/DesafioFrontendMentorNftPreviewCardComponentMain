@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: hsl(215, 51%, 70%);
+    --secondary-color: hsl(178, 100%, 50%);
+    --terciary-color: hsl(217, 54%, 11%);
+    --quaternary-color: hsl(216, 50%, 16%);
+    --quinary-color: hsl(215, 32%, 27%);
+    --senary-color: hsl(0, 0%, 100%);
+}
+
+body {
+    background-color: var(--terciary-color);
+    color: var(--primary-color);
+    font-family: 'Outfit';
+    font-size: 18px;
+}
+
+.principal {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 21%;
+    background-color: var(--quaternary-color);
+    padding: 1.5rem;
+    border-radius: 16px;
+
+    & .descricao {
+        & .imagem {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        & .titulo {
+            color: var(--senary-color);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            font-weight: 600;
+
+            &:hover {
+                cursor: pointer;
+                color: var(--secondary-color);
+            }
+        }
+
+        & .paragrafo {
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 5px);
+            background-color: var(--secondary-color); /* Usando a cor HSL definida */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .olho-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            visibility: hidden;
+            z-index: 1;
+        }
+
+        .container:hover::after {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .container:hover > .olho-icon{
+            visibility: visible;
+        }
+        
+    }
+
+    & .informacoes {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        & .preco, .tempo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .quantidade {
+                color: var(--secondary-color);
+                font-weight: 600;
+            }
+        }
+    }
+
+
+    & .criador {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 16px;
+        padding-top: 1rem;
+        border-top: 1px solid var(--quinary-color);
+
+        & .imagem {
+            border-radius: 100%;
+            width: 30px;
+            border: 1px solid var(--senary-color);
+        }
+
+        & .nome {
+            & .destaque {
+                color: var(--senary-color);
+                font-weight: 400;
+
+                &:hover {
+                    cursor: pointer;
+                    color: var(--secondary-color);
+                }
+            }
+        }
+        
+    }
+    
+}
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+    .card {
+        width: 90%;
+    }
+}
+
